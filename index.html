@@ -1,0 +1,1589 @@
+<!DOCTYPE html>
+<html lang="km">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ប្រព័ន្ធធ្វើតេស្តគណិតវិទ្យាថ្នាក់ទី៧ ប្រកបដោយវិជ្ជាជីវៈ">
+    <title>តេស្តគណិតវិទ្យាថ្នាក់ទី៧ - មេរៀនទី១</title>
+    
+    <!-- MathJax for LaTeX rendering -->
+    <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    
+    <style>
+        :root {
+            --primary-color: #5e35b1;
+            --primary-light: #7e57c2;
+            --primary-dark: #4527a0;
+            --success-color: #2ecc71;
+            --error-color: #e74c3c;
+            --warning-color: #f39c12;
+            --text-dark: #2c3e50;
+            --bg-gradient-start: #667eea;
+            --bg-gradient-end: #764ba2;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.1);
+            --shadow-md: 0 8px 20px rgba(0,0,0,0.15);
+            --shadow-lg: 0 12px 30px rgba(0,0,0,0.2);
+            --transition-speed: 0.3s;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body { 
+            font-family: 'Khmer OS Siemreap', 'Segoe UI', Arial, sans-serif; 
+            padding: 20px;
+            background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 2rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            margin-bottom: 10px;
+        }
+        
+        .header-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+        
+        .progress-container {
+            background: white;
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .progress-bar-container {
+            background: #e0e0e0;
+            height: 12px;
+            border-radius: 10px;
+            overflow: hidden;
+            margin-top: 10px;
+        }
+        
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, var(--success-color), #27ae60);
+            width: 0%;
+            transition: width 0.5s ease;
+        }
+        
+        .progress-text {
+            color: var(--text-dark);
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .question-card { 
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow-md);
+            transition: all var(--transition-speed) ease;
+            border-top: 5px solid var(--primary-color);
+        }
+        
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .question-number {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .question-text {
+            color: var(--text-dark);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            white-space: pre-line;
+        }
+        
+        .answer-section {
+            margin-top: 20px;
+        }
+        
+        .input-box {
+            width: 100%;
+            max-width: 400px;
+            padding: 14px 18px;
+            font-size: 1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            transition: all var(--transition-speed) ease;
+            font-family: inherit;
+        }
+        
+        .input-box:focus {
+            outline: none;
+            border-color: var(--primary-light);
+            box-shadow: 0 0 0 4px rgba(126, 87, 194, 0.1);
+        }
+        
+        .button-group {
+            margin-top: 15px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all var(--transition-speed) ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            box-shadow: 0 4px 12px rgba(94, 53, 177, 0.3);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(94, 53, 177, 0.4);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .btn-secondary {
+            background: linear-gradient(135deg, #95a5a6, #7f8c8d);
+            color: white;
+            box-shadow: 0 4px 12px rgba(127, 140, 141, 0.3);
+        }
+        
+        .btn-secondary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(127, 140, 141, 0.4);
+        }
+        
+        .btn-warning {
+            background: linear-gradient(135deg, var(--warning-color), #e67e22);
+            color: white;
+            box-shadow: 0 4px 12px rgba(243, 156, 18, 0.3);
+        }
+        
+        .btn-warning:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(243, 156, 18, 0.4);
+        }
+        
+        .result-message {
+            margin-top: 20px;
+            padding: 15px 20px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            display: none;
+            animation: slideIn 0.4s ease;
+        }
+        
+        .result-message.correct {
+            background: linear-gradient(135deg, #d4edda, #c3e6cb);
+            color: #155724;
+            border-left: 5px solid var(--success-color);
+        }
+        
+        .result-message.wrong {
+            background: linear-gradient(135deg, #f8d7da, #f5c6cb);
+            color: #721c24;
+            border-left: 5px solid var(--error-color);
+        }
+        
+        .choice-buttons {
+            display: none;
+            margin-top: 15px;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .solution-panel {
+            display: none;
+            margin-top: 25px;
+            padding: 25px;
+            background: linear-gradient(135deg, #fff9e6, #ffeaa7);
+            border-radius: 15px;
+            border-left: 5px solid var(--warning-color);
+            box-shadow: var(--shadow-sm);
+            animation: slideIn 0.4s ease;
+        }
+        
+        .solution-header {
+            color: var(--warning-color);
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .solution-content {
+            color: var(--text-dark);
+            line-height: 1.8;
+            white-space: pre-line;
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 15px;
+            }
+            
+            .header h1 {
+                font-size: 1.5rem;
+            }
+            
+            .question-card {
+                padding: 20px;
+            }
+            
+            .input-box {
+                max-width: 100%;
+            }
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 40px;
+            opacity: 0.9;
+        }
+        </style>
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>📐 តេស្តគណិតវិទ្យាថ្នាក់ទី៧</h1>
+            <p class="header-subtitle">មេរៀនទី១ - ចំនួនគត់</p>
+        </header>
+        
+        
+        
+        
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១</div>
+                <div class='question-text'>តាង \(A\) ជាចំនួនគត់ដែលធំជាង \(10\) តែតូចជាង \(19\) ។ រកផលបូកនៃគ្រប់ចំនួនដែលអាចមាននៃ \(A\) ។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_0" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_0" class="btn btn-primary" onclick="checkAnswer(0)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_0" class="result-message"></div>
+                    
+                    <div id="choices_0" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(0)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(0)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_0" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>ចំនួនគត់ចន្លោះពី 11 ដល់ 18 គឺ:
+ \(11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 = 135\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ២</div>
+                <div class='question-text'>គេមានចំនួន \(88, 90, 92, 94, 96, ...\) ។ តាមលំនាំនេះ សរសេរបីចំនួនបន្តទៀត។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_1" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_1" class="btn btn-primary" onclick="checkAnswer(1)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_1" class="result-message"></div>
+                    
+                    <div id="choices_1" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(1)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(1)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_1" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>លំនាំគឺជាចំនួនគត់ជាផ្គួបដោយ 2 ចាប់ពី 88៖
+\(88, 90, 92, 94, 96, 98, 100, 102, ...\)។
+ដូច្នេះ បីចំនួនបន្ទាប់គឺ 98, 100, 102។</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ៣</div>
+                <div class='question-text'>បើ \(x+y=2023\) រកតម្លៃនៃ \(y+x\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_2" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_2" class="btn btn-primary" onclick="checkAnswer(2)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_2" class="result-message"></div>
+                    
+                    <div id="choices_2" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(2)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(2)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_2" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>ដោយសារ វិធីបូកបូកមានលក្ខណៈអាចត្រឡប់:
+\(x+y = y+x\)។
+ដូច្នេះ \(y+x = 2023\)​</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ៤</div>
+                <div class='question-text'>គេដឹងថា \(X+2024^2=2024^2+10\)។ រកតម្លៃនៃ \(X\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_3" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_3" class="btn btn-primary" onclick="checkAnswer(3)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_3" class="result-message"></div>
+                    
+                    <div id="choices_3" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(3)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(3)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_3" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>ដោយសារ វិធីបូកបូកមានលក្ខណៈអាចត្រឡប់:
+\(X + 2024^2 = 2024^2 + X\) 
+នោះ\(X + 2024^2 = 10+2024^2\)​ ។
+ដូច្នេះ តម្លៃនៃ \(X=10\)។</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ៥</div>
+                <div class='question-text'>គណនាផលគុណនៃប្រាំតួដំបូងនៃចំនួនគត់ធម្មជាតិ។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_4" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_4" class="btn btn-primary" onclick="checkAnswer(4)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_4" class="result-message"></div>
+                    
+                    <div id="choices_4" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(4)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(4)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_4" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>ប្រាំតួដំបូងនៃចំនួនគត់ធម្មជាតិគឺ 1, 2, 3, 4, 5។
+ផលគុណគឺ:
+\(1 \times 2 \times 3 \times 4 \times 5 = 120\) 
+ដូច្នេះ ផលគុណនៃប្រាំតួដំបូងគឺ 120។</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ៦</div>
+                <div class='question-text'>គណនា \(25 + (2 \times 3 - 1) + [15 - (2 + 3 \times 4)]\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_5" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_5" class="btn btn-primary" onclick="checkAnswer(5)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_5" class="result-message"></div>
+                    
+                    <div id="choices_5" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(5)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(5)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_5" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(25 + (2 \times 3 - 1) + [15 - (2 + 3 \times 4)]\) 
+ \(=25+(6-1)+[15-(2+12)]\)
+ \(= 25 +5+[15-14] \)
+ \(= 30+1 \) 
+ \(=31\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ៧</div>
+                <div class='question-text'>គណនា \(9 + 8 \times [12 - 9 \div 3 + (3 \times 2 - 5)] + 9\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_6" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_6" class="btn btn-primary" onclick="checkAnswer(6)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_6" class="result-message"></div>
+                    
+                    <div id="choices_6" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(6)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(6)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_6" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី៖
+\(9 + 8 \times [12 - 9 \div 3 + (3 \times 2 - 5)] + 9\)
+\(= 9 + 8 \times [12 - 3 + (6-5)] + 9\)
+\(= 9 + 8 \times [12 - 3 + 1] + 9\)
+\(= 9 + 8 \times 10 + 9\)
+\(= 9 + 80 + 9\)
+\(= 98\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ៨</div>
+                <div class='question-text'>គណនា \(22-(12\div 6-1)+2\times [9\times (6-2\times 3)+1]\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_7" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_7" class="btn btn-primary" onclick="checkAnswer(7)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_7" class="result-message"></div>
+                    
+                    <div id="choices_7" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(7)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(7)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_7" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី៖
+\(22-(12\div 6-1)+2\times [9\times (6-2\times 3)+1]\)
+= \(22-(2-1)+2\times [9\times (6-6)+1]\)
+= \(22-1+2\times [9\times 0+1]\)
+= \(21+2\times 1\)
+= \(21+2\)
+= 23</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ៩</div>
+                <div class='question-text'>គណនា \(22-(12\div 6-1)+2\times [9\times (6-2\times 3)+1]\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_8" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_8" class="btn btn-primary" onclick="checkAnswer(8)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_8" class="result-message"></div>
+                    
+                    <div id="choices_8" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(8)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(8)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_8" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី៖
+\(22-(12\div 6-1)+2\times [9\times (6-2\times 3)+1]\)
+= \(22-(2-1)+2\times [9\times (6-6)+1]\)
+= \(22-1+2\times [0+1]\)
+= \(21+2\)
+= \(23\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១០</div>
+                <div class='question-text'>គណនា \(35 - (18 \div 3 - 2) + 4 \times [7 \times (5-2) + 3]\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_9" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_9" class="btn btn-primary" onclick="checkAnswer(9)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_9" class="result-message"></div>
+                    
+                    <div id="choices_9" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(9)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(9)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_9" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(35 - (18 \div 3 - 2) + 4 \times [7 \times (5-2) + 3]\)
+\(= 35 - (6 - 2) + 4 \times [7 \times 3 + 3]\)
+\(= 35 - 4 + 4 \times [21 + 3]\)
+\(= 31 + 4 \times 24\)
+\(= 31 + 96\)
+\(= 127\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១១</div>
+                <div class='question-text'>គណនា \(150 - (72 \div 8 + 2) + 15 \times [7 \times (10-6) + 4]\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_10" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_10" class="btn btn-primary" onclick="checkAnswer(10)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_10" class="result-message"></div>
+                    
+                    <div id="choices_10" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(10)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(10)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_10" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(150 - (72 \div 8 + 2) + 15 \times [7 \times (10-6) + 4]\)
+\(= 150 - (9 + 2) + 15 \times [7 \times 4 + 4]\)
+\(= 150 - 11 + 15 \times [28 + 4]\)
+\(= 139 + 15 \times 32\)
+\(= 139 + 480\)
+\(= 619\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១២</div>
+                <div class='question-text'>គណនា \(1^2+1^3\times4^3-2\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_11" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_11" class="btn btn-primary" onclick="checkAnswer(11)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_11" class="result-message"></div>
+                    
+                    <div id="choices_11" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(11)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(11)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_11" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី៖ 
+\(1^2+1^3\times4^3-2\)
+\(= 1 + 1 \times 64 - 2\)
+\(= 1 + 64 - 2\)
+\(= 65 - 2\)
+\(= 63\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១៣</div>
+                <div class='question-text'>គណនា \((12^2-11^2)+(14^2-13^2)\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_12" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_12" class="btn btn-primary" onclick="checkAnswer(12)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_12" class="result-message"></div>
+                    
+                    <div id="choices_12" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(12)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(12)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_12" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>យើងបាន 
+\((12^2-11^2)+(14^2-13^2) = (144-121) + (196-169) \)
+\( = 23 + 27 \)
+\( = 50 \)។</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១៤</div>
+                <div class='question-text'>គណនា \(32-6\times \left(8-2^3\right)+18\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_13" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_13" class="btn btn-primary" onclick="checkAnswer(13)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_13" class="result-message"></div>
+                    
+                    <div id="choices_13" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(13)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(13)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_13" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី៖
+\(32-6\times \left(8-2^3\right)+18\)
+\(= 32 - 6 \times (8 - 8) + 18\)
+\(= 32 - 6 \times 0 + 18\)
+\(= 32 - 0 + 18\)
+\(= 32 + 18\)
+\(= 50\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១៥</div>
+                <div class='question-text'>គណនា \((3\times 5-9)^3\times (1+2\times 3)^2+4^2)\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_14" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_14" class="btn btn-primary" onclick="checkAnswer(14)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_14" class="result-message"></div>
+                    
+                    <div id="choices_14" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(14)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(14)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_14" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\((3\times 5-9)^3\times (1+2\times 3)^2+4^2\) 
+ \(= (15-9)^3 \times (1+6)^2 + 16\) 
+ \(= 6^3 \times 7^2 + 16\) 
+ \(= 216 \times 49 + 16\) 
+ \(= 10584 + 16\) 
+ \(=10600\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១៦</div>
+                <div class='question-text'>គណនា \(9234\times [3\times 3\times (1+8^3)]\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_15" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_15" class="btn btn-primary" onclick="checkAnswer(15)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_15" class="result-message"></div>
+                    
+                    <div id="choices_15" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(15)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(15)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_15" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(9234\times [3\times 3\times (1+8^3)]\) 
+ \(=9234 \times [9 \times (1+512)]\) 
+ \(=9234 \times [9 \times 513]\) 
+ \(=9234 \times 4617\) 
+ \(=42633378\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១៧</div>
+                <div class='question-text'>គណនា \(76-\{2\times [2\times 5^2-(31-2\times 3)]\}+3\times 25\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_16" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_16" class="btn btn-primary" onclick="checkAnswer(16)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_16" class="result-message"></div>
+                    
+                    <div id="choices_16" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(16)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(16)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_16" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(76-\{2\times [2\times 5^2-(31-2\times 3)]\}+3\times 25\) 
+ \(=76 - \{2 \times [2\times 25 - (31-6)]\} +75\) 
+ \(=76 - \{2 \times [50 - 25]\} +75\) 
+ \(=76 - \{2 \times 25\} +75\) 
+ \(=76 - 50 +75\) 
+ \(=26 +75\) 
+ \(=101\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១៨</div>
+                <div class='question-text'>គណនា \(\sqrt{1}+\sqrt{4}+\sqrt{9}\) ។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_17" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_17" class="btn btn-primary" onclick="checkAnswer(17)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_17" class="result-message"></div>
+                    
+                    <div id="choices_17" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(17)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(17)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_17" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(\sqrt{1}+\sqrt{4}+\sqrt{9}\)
+\(=1+2+3\)
+\(=6\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ១៩</div>
+                <div class='question-text'>គណនា \(\sqrt[3]{1}+\sqrt[3]{8}+\sqrt[3]{27}\) ។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_18" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_18" class="btn btn-primary" onclick="checkAnswer(18)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_18" class="result-message"></div>
+                    
+                    <div id="choices_18" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(18)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(18)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_18" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(\sqrt[3]{1}+\sqrt[3]{8}+\sqrt[3]{27}\)
+\(=1+2+3\)
+\(=6\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ២០</div>
+                <div class='question-text'>គណនា \(\sqrt{100}-\sqrt{81}+\sqrt{64}-\sqrt{49}\) ។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_19" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_19" class="btn btn-primary" onclick="checkAnswer(19)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_19" class="result-message"></div>
+                    
+                    <div id="choices_19" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(19)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(19)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_19" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(\sqrt{100}-\sqrt{81}+\sqrt{64}-\sqrt{49}\)
+\(=10-9+8-7\)
+\(=1+8-7\)
+\(=9-7\)
+\(=2\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ២១</div>
+                <div class='question-text'>គណនា \(\sqrt{9}\times\sqrt{16}+2^2+4^2\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_20" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_20" class="btn btn-primary" onclick="checkAnswer(20)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_20" class="result-message"></div>
+                    
+                    <div id="choices_20" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(20)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(20)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_20" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(\sqrt{9}\times\sqrt{16}+2^2+4^2\)
+\(=3\times4+4+16\)
+\(=12+4+16\)
+\(=16+16\)
+\(=32\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ២២</div>
+                <div class='question-text'>គណនា \(\sqrt[3]{27}-\sqrt[3]{8}+\sqrt[3]{1}-1^2\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_21" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_21" class="btn btn-primary" onclick="checkAnswer(21)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_21" class="result-message"></div>
+                    
+                    <div id="choices_21" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(21)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(21)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_21" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(\sqrt[3]{27}-\sqrt[3]{8}+\sqrt[3]{1}-1^2\)
+\(=3-2+1-1\)
+\(=1+1-1\)
+\(=2-1\)
+\(=1\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ២៣</div>
+                <div class='question-text'>គណនា \(\sqrt[3]{6\times6\times6}-\sqrt[3]{5\times5\times5}\)។</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_22" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_22" class="btn btn-primary" onclick="checkAnswer(22)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_22" class="result-message"></div>
+                    
+                    <div id="choices_22" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(22)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(22)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_22" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>គណនាតាមលំដាប់ប្រមាណវិធី
+\(\sqrt[3]{6\times6\times6}-\sqrt[3]{5\times5\times5}\)
+\(=\sqrt[3]{6^3}-\sqrt[3]{5^3}\)
+\(=6-5\)
+\(=1\)</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ២៤</div>
+                <div class='question-text'>កសិករម្នាក់ប្រមូលផលស្រូវបាន 5 តោន។ គាត់យកស្រូវនោះ 2000kg ទៅលក់ឲ្យឈ្មួញ ហើយស្រូវដែលនៅសល់គាត់ទុកសម្រាប់បរិភោគ។ តើគាត់ទុកស្រូវសម្រាប់បរិភោគប៉ុន្មានគីឡូក្រាម?</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_23" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_23" class="btn btn-primary" onclick="checkAnswer(23)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_23" class="result-message"></div>
+                    
+                    <div id="choices_23" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(23)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(23)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_23" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>5 តោន = 5000 គីឡូក្រាម។
+លក់ 2000 គីឡូក្រាម។
+ដូច្នេះ ស្រូវនៅសល់សម្រាប់បរិភោគគឺ 5000 - 2000 = 3000 គីឡូក្រាម។</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ២៥</div>
+                <div class='question-text'>ម្ចាស់ហាងលក់ភេសជ្ជៈបានទិញទឹកក្រូច 15 កេស និងទឹកផ្លែឈើ 12 កេស។ ទឹកក្រូចមួយកេសមាន 24 កំប៉ុង ហើយទឹកផ្លែឈើមួយកេសមាន 18 កំប៉ុង។ គាត់លក់ទឹកក្រូច និងទឹកផ្លែឈើបានសរុប 350 កំប៉ុង។ តើគាត់នៅសល់ភេសជ្ជៈប៉ុន្មានកំប៉ុង?</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_24" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_24" class="btn btn-primary" onclick="checkAnswer(24)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_24" class="result-message"></div>
+                    
+                    <div id="choices_24" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(24)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(24)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_24" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>ទឹកក្រូចសរុប៖ 15 × 24 = 360 កំប៉ុង។
+ទឹកផ្លែឈើសរុប៖ 12 × 18 = 216 កំប៉ុង។
+សរុបទឹកទាំងអស់៖ 360 + 216 = 576 កំប៉ុង។
+លក់៖ 350 កំប៉ុង។
+ដូច្នេះ នៅសល់៖ 576 - 350 = 226 កំប៉ុង។</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ២៦</div>
+                <div class='question-text'>ពូផលមានដីស្រែ 15 ហិកតា។ គាត់បានលក់ដីនោះ 35000 ម៉ែត្រការេ ក្នុងតម្លៃ 500 រៀលក្នុងមួយម៉ែត្រការេ។ តើគាត់នៅសល់ដីស្រែប៉ុន្មានម៉ែត្រការេ ហើយគាត់ទទួលបានប្រាក់ប៉ុន្មានរៀលពីការលក់ដីនោះ?</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_25" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_25" class="btn btn-primary" onclick="checkAnswer(25)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_25" class="result-message"></div>
+                    
+                    <div id="choices_25" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(25)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(25)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_25" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>15 ហិកតា = 15 × 10000 = 150000 ម៉ែត្រការេ។
+លក់ 35000 ម៉ែត្រការេ។
+ដូច្នេះ ដីនៅសល់៖ 150000 - 35000 = 115000 ម៉ែត្រការេ។
+ប្រាក់ទទួលបាន៖ 35000 × 500 = 17500000 រៀល។</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class='question-card'>
+                <div class='question-number'>📝 លំហាត់ទី ២៧</div>
+                <div class='question-text'>ឪពុករបស់រតនាមានលុយ 320000 រៀល។ គាត់បានទិញសម្ភារៈសិក្សាឲ្យកូន 3 នាក់ ដោយកូនម្នាក់ៗចំណាយអស់ 75000 រៀល។ បន្ទាប់មក គាត់ឲ្យលុយដែលនៅសល់ទៅកូនស្រីពៅរបស់គាត់។ តើកូនស្រីពៅទទួលបានលុយប៉ុន្មានរៀល?</div>
+                
+                <div class='answer-section'>
+                    <input 
+                        id="input_26" 
+                        class="input-box" 
+                        placeholder="បញ្ចូលចម្លើយរបស់អ្នកនៅទីនេះ...(ឧ. 121 ឬ 12.23,...)" 
+                        type="text"
+                        autocomplete="off">
+                    
+                    <div class='button-group'>
+                        <button id="checkBtn_26" class="btn btn-primary" onclick="checkAnswer(26)">
+                            ✓ ពិនិត្យចម្លើយ
+                        </button>
+                    </div>
+                    
+                    <div id="result_26" class="result-message"></div>
+                    
+                    <div id="choices_26" class="choice-buttons button-group">
+                        <button class="btn btn-secondary" onclick="tryAgain(26)">
+                            🔄 សាកល្បងម្ដងទៀត
+                        </button>
+                        <button class="btn btn-warning" onclick="showSolution(26)">
+                            📚 មើលរបៀបដោះស្រាយ
+                        </button>
+                    </div>
+                    
+                    <div id="solution_26" class="solution-panel">
+                        <div class='solution-header'>
+                            📚 ដំណោះស្រាយលម្អិត
+                        </div>
+                        <div class='solution-content'>លុយសរុប៖ 320000 រៀល។
+ចំណាយសម្រាប់កូន 3 នាក់៖ 3 × 75000 = 225000 រៀល។
+លុយនៅសល់៖ 320000 - 225000 = 95000 រៀល។
+ដូច្នេះ កូនស្រីពៅទទួលបាន 95000 រៀល។</div>
+                    </div>
+                </div>
+            </div>
+            
+        <div class="progress-container">
+            <div class="progress-text">វឌ្ឍនភាព៖ 0 / 27 ត្រឹមត្រូវ</div>
+            <div class="progress-bar-container">
+                <div class="progress-bar"></div>
+            </div>
+        </div>
+        <footer class="footer">
+            <p>🎓 រចនាឡើងសម្រាប់សិស្សថ្នាក់ទី៧</p>
+        </footer>
+    </div>
+    
+    <script>
+        const questionsData = [{"question": "តាង \\(A\\) ជាចំនួនគត់ដែលធំជាង \\(10\\) តែតូចជាង \\(19\\) ។ រកផលបូកនៃគ្រប់ចំនួនដែលអាចមាននៃ \\(A\\) ។", "answer": "135", "solution": "ចំនួនគត់ចន្លោះពី 11 ដល់ 18 គឺ:\n \\(11 + 12 + 13 + 14 + 15 + 16 + 17 + 18 = 135\\)"}, {"question": "គេមានចំនួន \\(88, 90, 92, 94, 96, ...\\) ។ តាមលំនាំនេះ សរសេរបីចំនួនបន្តទៀត។", "answer": "98, 100, 102", "solution": "លំនាំគឺជាចំនួនគត់ជាផ្គួបដោយ 2 ចាប់ពី 88៖\n\\(88, 90, 92, 94, 96, 98, 100, 102, ...\\)។\nដូច្នេះ បីចំនួនបន្ទាប់គឺ 98, 100, 102។"}, {"question": "បើ \\(x+y=2023\\) រកតម្លៃនៃ \\(y+x\\)។", "answer": "2023", "solution": "ដោយសារ វិធីបូកបូកមានលក្ខណៈអាចត្រឡប់:\n\\(x+y = y+x\\)។\nដូច្នេះ \\(y+x = 2023\\)​"}, {"question": "គេដឹងថា \\(X+2024^2=2024^2+10\\)។ រកតម្លៃនៃ \\(X\\)។", "answer": "10", "solution": "ដោយសារ វិធីបូកបូកមានលក្ខណៈអាចត្រឡប់:\n\\(X + 2024^2 = 2024^2 + X\\) \nនោះ\\(X + 2024^2 = 10+2024^2\\)​ ។\nដូច្នេះ តម្លៃនៃ \\(X=10\\)។"}, {"question": "គណនាផលគុណនៃប្រាំតួដំបូងនៃចំនួនគត់ធម្មជាតិ។", "answer": "120", "solution": "ប្រាំតួដំបូងនៃចំនួនគត់ធម្មជាតិគឺ 1, 2, 3, 4, 5។\nផលគុណគឺ:\n\\(1 \\times 2 \\times 3 \\times 4 \\times 5 = 120\\) \nដូច្នេះ ផលគុណនៃប្រាំតួដំបូងគឺ 120។"}, {"question": "គណនា \\(25 + (2 \\times 3 - 1) + [15 - (2 + 3 \\times 4)]\\)។", "answer": "31", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(25 + (2 \\times 3 - 1) + [15 - (2 + 3 \\times 4)]\\) \n \\(=25+(6-1)+[15-(2+12)]\\)\n \\(= 25 +5+[15-14] \\)\n \\(= 30+1 \\) \n \\(=31\\)"}, {"question": "គណនា \\(9 + 8 \\times [12 - 9 \\div 3 + (3 \\times 2 - 5)] + 9\\)។", "answer": "98", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី៖\n\\(9 + 8 \\times [12 - 9 \\div 3 + (3 \\times 2 - 5)] + 9\\)\n\\(= 9 + 8 \\times [12 - 3 + (6-5)] + 9\\)\n\\(= 9 + 8 \\times [12 - 3 + 1] + 9\\)\n\\(= 9 + 8 \\times 10 + 9\\)\n\\(= 9 + 80 + 9\\)\n\\(= 98\\)"}, {"question": "គណនា \\(22-(12\\div 6-1)+2\\times [9\\times (6-2\\times 3)+1]\\)។", "answer": "24", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី៖\n\\(22-(12\\div 6-1)+2\\times [9\\times (6-2\\times 3)+1]\\)\n= \\(22-(2-1)+2\\times [9\\times (6-6)+1]\\)\n= \\(22-1+2\\times [9\\times 0+1]\\)\n= \\(21+2\\times 1\\)\n= \\(21+2\\)\n= 23"}, {"question": "គណនា \\(22-(12\\div 6-1)+2\\times [9\\times (6-2\\times 3)+1]\\)។", "answer": "23", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី៖\n\\(22-(12\\div 6-1)+2\\times [9\\times (6-2\\times 3)+1]\\)\n= \\(22-(2-1)+2\\times [9\\times (6-6)+1]\\)\n= \\(22-1+2\\times [0+1]\\)\n= \\(21+2\\)\n= \\(23\\)"}, {"question": "គណនា \\(35 - (18 \\div 3 - 2) + 4 \\times [7 \\times (5-2) + 3]\\)។", "answer": "127", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(35 - (18 \\div 3 - 2) + 4 \\times [7 \\times (5-2) + 3]\\)\n\\(= 35 - (6 - 2) + 4 \\times [7 \\times 3 + 3]\\)\n\\(= 35 - 4 + 4 \\times [21 + 3]\\)\n\\(= 31 + 4 \\times 24\\)\n\\(= 31 + 96\\)\n\\(= 127\\)"}, {"question": "គណនា \\(150 - (72 \\div 8 + 2) + 15 \\times [7 \\times (10-6) + 4]\\)។", "answer": "619", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(150 - (72 \\div 8 + 2) + 15 \\times [7 \\times (10-6) + 4]\\)\n\\(= 150 - (9 + 2) + 15 \\times [7 \\times 4 + 4]\\)\n\\(= 150 - 11 + 15 \\times [28 + 4]\\)\n\\(= 139 + 15 \\times 32\\)\n\\(= 139 + 480\\)\n\\(= 619\\)"}, {"question": "គណនា \\(1^2+1^3\\times4^3-2\\)។", "answer": "63", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី៖ \n\\(1^2+1^3\\times4^3-2\\)\n\\(= 1 + 1 \\times 64 - 2\\)\n\\(= 1 + 64 - 2\\)\n\\(= 65 - 2\\)\n\\(= 63\\)"}, {"question": "គណនា \\((12^2-11^2)+(14^2-13^2)\\)។", "answer": "50", "solution": "យើងបាន \n\\((12^2-11^2)+(14^2-13^2) = (144-121) + (196-169) \\)\n\\( = 23 + 27 \\)\n\\( = 50 \\)។"}, {"question": "គណនា \\(32-6\\times \\left(8-2^3\\right)+18\\)។", "answer": "50", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី៖\n\\(32-6\\times \\left(8-2^3\\right)+18\\)\n\\(= 32 - 6 \\times (8 - 8) + 18\\)\n\\(= 32 - 6 \\times 0 + 18\\)\n\\(= 32 - 0 + 18\\)\n\\(= 32 + 18\\)\n\\(= 50\\)"}, {"question": "គណនា \\((3\\times 5-9)^3\\times (1+2\\times 3)^2+4^2)\\)។", "answer": "10600", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\((3\\times 5-9)^3\\times (1+2\\times 3)^2+4^2\\) \n \\(= (15-9)^3 \\times (1+6)^2 + 16\\) \n \\(= 6^3 \\times 7^2 + 16\\) \n \\(= 216 \\times 49 + 16\\) \n \\(= 10584 + 16\\) \n \\(=10600\\)"}, {"question": "គណនា \\(9234\\times [3\\times 3\\times (1+8^3)]\\)។", "answer": "42633378", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(9234\\times [3\\times 3\\times (1+8^3)]\\) \n \\(=9234 \\times [9 \\times (1+512)]\\) \n \\(=9234 \\times [9 \\times 513]\\) \n \\(=9234 \\times 4617\\) \n \\(=42633378\\)"}, {"question": "គណនា \\(76-\\{2\\times [2\\times 5^2-(31-2\\times 3)]\\}+3\\times 25\\)។", "answer": "101", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(76-\\{2\\times [2\\times 5^2-(31-2\\times 3)]\\}+3\\times 25\\) \n \\(=76 - \\{2 \\times [2\\times 25 - (31-6)]\\} +75\\) \n \\(=76 - \\{2 \\times [50 - 25]\\} +75\\) \n \\(=76 - \\{2 \\times 25\\} +75\\) \n \\(=76 - 50 +75\\) \n \\(=26 +75\\) \n \\(=101\\)"}, {"question": "គណនា \\(\\sqrt{1}+\\sqrt{4}+\\sqrt{9}\\) ។", "answer": "6", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(\\sqrt{1}+\\sqrt{4}+\\sqrt{9}\\)\n\\(=1+2+3\\)\n\\(=6\\)"}, {"question": "គណនា \\(\\sqrt[3]{1}+\\sqrt[3]{8}+\\sqrt[3]{27}\\) ។", "answer": "6", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(\\sqrt[3]{1}+\\sqrt[3]{8}+\\sqrt[3]{27}\\)\n\\(=1+2+3\\)\n\\(=6\\)"}, {"question": "គណនា \\(\\sqrt{100}-\\sqrt{81}+\\sqrt{64}-\\sqrt{49}\\) ។", "answer": "2", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(\\sqrt{100}-\\sqrt{81}+\\sqrt{64}-\\sqrt{49}\\)\n\\(=10-9+8-7\\)\n\\(=1+8-7\\)\n\\(=9-7\\)\n\\(=2\\)"}, {"question": "គណនា \\(\\sqrt{9}\\times\\sqrt{16}+2^2+4^2\\)។", "answer": "32", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(\\sqrt{9}\\times\\sqrt{16}+2^2+4^2\\)\n\\(=3\\times4+4+16\\)\n\\(=12+4+16\\)\n\\(=16+16\\)\n\\(=32\\)"}, {"question": "គណនា \\(\\sqrt[3]{27}-\\sqrt[3]{8}+\\sqrt[3]{1}-1^2\\)។", "answer": "1", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(\\sqrt[3]{27}-\\sqrt[3]{8}+\\sqrt[3]{1}-1^2\\)\n\\(=3-2+1-1\\)\n\\(=1+1-1\\)\n\\(=2-1\\)\n\\(=1\\)"}, {"question": "គណនា \\(\\sqrt[3]{6\\times6\\times6}-\\sqrt[3]{5\\times5\\times5}\\)។", "answer": "1", "solution": "គណនាតាមលំដាប់ប្រមាណវិធី\n\\(\\sqrt[3]{6\\times6\\times6}-\\sqrt[3]{5\\times5\\times5}\\)\n\\(=\\sqrt[3]{6^3}-\\sqrt[3]{5^3}\\)\n\\(=6-5\\)\n\\(=1\\)"}, {"question": "កសិករម្នាក់ប្រមូលផលស្រូវបាន 5 តោន។ គាត់យកស្រូវនោះ 2000kg ទៅលក់ឲ្យឈ្មួញ ហើយស្រូវដែលនៅសល់គាត់ទុកសម្រាប់បរិភោគ។ តើគាត់ទុកស្រូវសម្រាប់បរិភោគប៉ុន្មានគីឡូក្រាម?", "answer": "3000", "solution": "5 តោន = 5000 គីឡូក្រាម។\nលក់ 2000 គីឡូក្រាម។\nដូច្នេះ ស្រូវនៅសល់សម្រាប់បរិភោគគឺ 5000 - 2000 = 3000 គីឡូក្រាម។"}, {"question": "ម្ចាស់ហាងលក់ភេសជ្ជៈបានទិញទឹកក្រូច 15 កេស និងទឹកផ្លែឈើ 12 កេស។ ទឹកក្រូចមួយកេសមាន 24 កំប៉ុង ហើយទឹកផ្លែឈើមួយកេសមាន 18 កំប៉ុង។ គាត់លក់ទឹកក្រូច និងទឹកផ្លែឈើបានសរុប 350 កំប៉ុង។ តើគាត់នៅសល់ភេសជ្ជៈប៉ុន្មានកំប៉ុង?", "answer": "226", "solution": "ទឹកក្រូចសរុប៖ 15 × 24 = 360 កំប៉ុង។\nទឹកផ្លែឈើសរុប៖ 12 × 18 = 216 កំប៉ុង។\nសរុបទឹកទាំងអស់៖ 360 + 216 = 576 កំប៉ុង។\nលក់៖ 350 កំប៉ុង។\nដូច្នេះ នៅសល់៖ 576 - 350 = 226 កំប៉ុង។"}, {"question": "ពូផលមានដីស្រែ 15 ហិកតា។ គាត់បានលក់ដីនោះ 35000 ម៉ែត្រការេ ក្នុងតម្លៃ 500 រៀលក្នុងមួយម៉ែត្រការេ។ តើគាត់នៅសល់ដីស្រែប៉ុន្មានម៉ែត្រការេ ហើយគាត់ទទួលបានប្រាក់ប៉ុន្មានរៀលពីការលក់ដីនោះ?", "answer": "115000 ម៉ែត្រការេ និង 17500000 រៀល", "solution": "15 ហិកតា = 15 × 10000 = 150000 ម៉ែត្រការេ។\nលក់ 35000 ម៉ែត្រការេ។\nដូច្នេះ ដីនៅសល់៖ 150000 - 35000 = 115000 ម៉ែត្រការេ។\nប្រាក់ទទួលបាន៖ 35000 × 500 = 17500000 រៀល។"}, {"question": "ឪពុករបស់រតនាមានលុយ 320000 រៀល។ គាត់បានទិញសម្ភារៈសិក្សាឲ្យកូន 3 នាក់ ដោយកូនម្នាក់ៗចំណាយអស់ 75000 រៀល។ បន្ទាប់មក គាត់ឲ្យលុយដែលនៅសល់ទៅកូនស្រីពៅរបស់គាត់។ តើកូនស្រីពៅទទួលបានលុយប៉ុន្មានរៀល?", "answer": "95000", "solution": "លុយសរុប៖ 320000 រៀល។\nចំណាយសម្រាប់កូន 3 នាក់៖ 3 × 75000 = 225000 រៀល។\nលុយនៅសល់៖ 320000 - 225000 = 95000 រៀល។\nដូច្នេះ កូនស្រីពៅទទួលបាន 95000 រៀល។"}];
+        let correctAnswers = 0;
+        let totalAnswered = 0;
+        
+        function toKhmerNumeral(num) {
+            const khmerDigits = ['០', '១', '២', '៣', '៤', '៥', '៦', '៧', '៨', '៩'];
+            return String(num).split('').map(d => khmerDigits[parseInt(d)]).join('');
+        }
+        
+        function normalizeAnswer(ans) {
+            return ans.replace(/\s+/g, '').toLowerCase().trim();
+        }
+        
+        function updateProgress() {
+            const progressBar = document.querySelector('.progress-bar');
+            const progressText = document.querySelector('.progress-text');
+            const percentage = totalAnswered === 0 ? 0 : (correctAnswers / questionsData.length) * 100;
+            
+            progressBar.style.width = percentage + '%';
+            progressText.textContent = `វឌ្ឍនភាព៖ ${correctAnswers} / ${questionsData.length} ត្រឹមត្រូវ`;
+        }
+        
+        function checkAnswer(qIndex) {
+            const input = document.getElementById(`input_${qIndex}`);
+            const userAns = input.value.trim();
+            const correctAns = questionsData[qIndex].answer;
+            const result = document.getElementById(`result_${qIndex}`);
+            const checkBtn = document.getElementById(`checkBtn_${qIndex}`);
+            const choiceButtons = document.getElementById(`choices_${qIndex}`);
+            
+            if (!userAns) {
+                result.className = 'result-message wrong';
+                result.textContent = '⚠️ សូមបញ្ចូលចម្លើយ';
+                result.style.display = 'block';
+                return;
+            }
+            
+            const isCorrect = normalizeAnswer(userAns) === normalizeAnswer(correctAns);
+            
+            // Update stats only on first attempt
+            if (!input.hasAttribute('data-answered')) {
+                totalAnswered++;
+                if (isCorrect) correctAnswers++;
+                input.setAttribute('data-answered', 'true');
+                updateProgress();
+            }
+            
+            result.className = `result-message ${isCorrect ? 'correct' : 'wrong'}`;
+            result.innerHTML = isCorrect 
+                ? '✓ ត្រឹមត្រូវ! ល្អណាស់!😍' 
+                : `✗ មិនត្រឹមត្រូវ។😒`;
+            result.style.display = 'block';
+            
+            // Hide check button and show choice buttons
+            checkBtn.style.display = 'none';
+            choiceButtons.style.display = 'flex';
+            input.disabled = true;
+        }
+        
+        function tryAgain(qIndex) {
+            const input = document.getElementById(`input_${qIndex}`);
+            const result = document.getElementById(`result_${qIndex}`);
+            const checkBtn = document.getElementById(`checkBtn_${qIndex}`);
+            const choiceButtons = document.getElementById(`choices_${qIndex}`);
+            
+            // Reset input
+            input.value = '';
+            input.disabled = false;
+            input.focus();
+            
+            // Hide result and choice buttons
+            result.style.display = 'none';
+            choiceButtons.style.display = 'none';
+            
+            // Show check button again
+            checkBtn.style.display = 'inline-flex';
+        }
+        
+        function showSolution(qIndex) {
+            const solution = document.getElementById(`solution_${qIndex}`);
+            solution.style.display = 'block';
+            
+            if (typeof MathJax !== 'undefined') {
+                MathJax.typesetPromise([solution]).catch(err => console.error('MathJax error:', err));
+            }
+        }
+        
+        function resetQuiz() {
+            if (!confirm('តើអ្នកចង់ចាប់ផ្តើមឡើងវិញមែនទេ?')) return;
+            
+            document.querySelectorAll('.input-box').forEach(input => {
+                input.value = '';
+                input.disabled = false;
+                input.removeAttribute('data-answered');
+            });
+            
+            document.querySelectorAll('.result-message').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.solution-panel').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('.choice-buttons').forEach(el => el.style.display = 'none');
+            document.querySelectorAll('[id^="checkBtn_"]').forEach(btn => btn.style.display = 'inline-flex');
+            
+            correctAnswers = 0;
+            totalAnswered = 0;
+            updateProgress();
+        }
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            // Enter key submission
+            document.querySelectorAll('.input-box').forEach((input, index) => {
+                input.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkAnswer(index);
+                    }
+                });
+            });
+            
+            // Initialize progress
+            updateProgress();
+        });
+        </script>
+</body>
+</html>
